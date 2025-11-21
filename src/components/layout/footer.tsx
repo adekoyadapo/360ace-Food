@@ -16,11 +16,8 @@ export function Footer() {
             Africa and beyond.
           </p>
           <div className="flex gap-4 text-sm text-slate/60">
-            <Link href="mailto:hello@360acefood.com" className="hover:text-midnight">
-              hello@360acefood.com
-            </Link>
-            <Link href="tel:+12125550123" className="hover:text-midnight">
-              +1 (212) 555-0123
+            <Link href="mailto:food@360ace.food" className="hover:text-midnight">
+              food@360ace.food
             </Link>
           </div>
         </div>

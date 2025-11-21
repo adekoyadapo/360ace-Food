@@ -4,7 +4,13 @@ This site uses structured JSON files inside `/content` so non-developers can ref
 
 ## Service Offerings
 - File: `content/services.json`
-- Each object represents a service cluster with a description and bullet list.
+- Each object represents a service cluster with:
+  - `category` (string)
+  - `summary` (string)
+  - `services` (string[]) – primary bullet points
+  - `areas` (string[], optional) – e.g. training areas
+  - `examples` (string[], optional) – e.g. SOP examples
+  - `cta` ({ `label`, `href` }, optional)
 - Keep the array order to influence on-page layout.
 
 ## Process, Insights, Testimonials, Stats

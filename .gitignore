@@ -17,3 +17,5 @@ pnpm-debug.log*
 # Editor directories
 .vscode
 .idea
+*.docx
+docs

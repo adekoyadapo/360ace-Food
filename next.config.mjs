@@ -6,7 +6,9 @@ const nextConfig = {
     serverActions: {
       bodySizeLimit: '2mb'
     }
-  }
+  },
+  // Produce a minimal, self-contained server for Docker runtime
+  output: 'standalone'
 };
 
 export default nextConfig;

@@ -1,0 +1,15 @@
+# Reduce context size and keep images smaller
+.git
+.gitignore
+node_modules
+.next
+dist
+npm-debug.log
+yarn-error.log
+Dockerfile*
+docker-compose*.yml
+README.md
+docs
+legacy
+Services for Website - Oct 31.docx
+

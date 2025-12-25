@@ -1,0 +1,44 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: 360ace-food:web
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      # Safe defaults if .env is missing at build/run
+      - NEXT_PUBLIC_MAINTENANCE_MODE=${NEXT_PUBLIC_MAINTENANCE_MODE:-true}
+      - NEXT_PUBLIC_LAUNCH_AT=${NEXT_PUBLIC_LAUNCH_AT:-2025-10-01T09:00:00Z}
+    # Resource limits (non‑Swarm)
+    cpus: "0.50"
+    mem_limit: "512m"
+    restart: unless-stopped
+
+  # Optional: local dev profile using hot reload
+  dev:
+    profiles: ["dev"]
+    image: node:20-alpine
+    working_dir: /workspace
+    command: sh -c "npm ci && npm run dev -- -p 3000"
+    volumes:
+      - ./:/workspace
+      - node_modules_cache:/workspace/node_modules
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    environment:
+      - NEXT_TELEMETRY_DISABLED=1
+      - NEXT_PUBLIC_MAINTENANCE_MODE=${NEXT_PUBLIC_MAINTENANCE_MODE:-true}
+      - NEXT_PUBLIC_LAUNCH_AT=${NEXT_PUBLIC_LAUNCH_AT:-2025-10-01T09:00:00Z}
+    # Dev container limits (tweak as needed)
+    cpus: "1.00"
+    mem_limit: "1g"
+
+volumes:
+  node_modules_cache:

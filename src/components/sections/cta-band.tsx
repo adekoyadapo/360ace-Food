@@ -21,8 +21,8 @@ export function CTABand() {
               >
                 Book a consultation
               </Link>
-              <Link href="mailto:hello@360acefood.com" className="text-midnight/70">
-                hello@360acefood.com
+              <Link href="mailto:food@360ace.food" className="text-midnight/70">
+                food@360ace.food
               </Link>
               <Link href="tel:+12125550123" className="text-midnight/70">
                 +1 (212) 555-0123

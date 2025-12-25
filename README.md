@@ -44,8 +44,8 @@ The contact API uses [MailerSend](https://www.mailersend.com/) to deliver notifi
 3. Create `.env.local` (ignored by git) with:
    ```env
    MAILERSEND_API_TOKEN=your-mailersend-api-token
-   CONTACT_FROM_EMAIL=notifications@360acefood.com
-   CONTACT_TO_EMAIL=hello@360acefood.com
+   CONTACT_FROM_EMAIL=food@360ace.food
+   CONTACT_TO_EMAIL=food@360ace.food
    ```
 4. Start the dev server – submissions from `ContactForm.tsx` will POST to `app/api/contact/route.ts`, render `emails/contact-request.tsx`, and send via MailerSend.
 
@@ -58,6 +58,38 @@ The contact API uses [MailerSend](https://www.mailersend.com/) to deliver notifi
 - Run `npm run build` for lint/build.
 - The repo uses Next.js fonts; ensure outbound network is allowed or replace with self-hosted fonts when building in restricted environments.
 - When deploying to Netlify, add `MAILERSEND_API_TOKEN`, `CONTACT_FROM_EMAIL`, and `CONTACT_TO_EMAIL` to the dashboard before publishing.
+
+## Docker
+
+The repo includes a production-grade Dockerfile and a docker compose setup.
+
+### Build and Run (production)
+- Build image: `docker compose build web`
+- Start container: `docker compose up -d web`
+- Open: http://localhost:3000
+
+Environment variables are loaded from `.env` (copy `.env.example` to `.env`). At minimum you can run with:
+```env
+NEXT_PUBLIC_MAINTENANCE_MODE=true
+NEXT_PUBLIC_LAUNCH_AT=2025-10-01T09:00:00Z
+CONTACT_FROM_EMAIL=food@360ace.food
+CONTACT_TO_EMAIL=food@360ace.food
+MAILERSEND_API_TOKEN=demo-noop-token
+```
+
+### Logs and Stop
+- Tail logs: `docker compose logs -f web`
+- Stop: `docker compose down`
+
+### Dev Profile (hot reload)
+Use the `dev` profile for local development inside Docker:
+- `docker compose --profile dev up` (first run takes longer for `npm ci`)
+- Edits on your host sync into the container via a bind mount.
+
+### How it works
+- Multi-stage build creates a minimal Next.js [standalone] runtime (see `next.config.mjs`).
+- Runtime container exposes port `3000` and starts with `node server.js`.
+- Static assets are copied from `.next/static` and `public`.
 
 ## Temporary Maintenance Mode
 The homepage can display a launch countdown while the site is under construction.

@@ -17,7 +17,7 @@ export function Hero() {
             initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.6 }}
-            className="inline-flex items-center rounded-full bg-ember/15 px-4 py-2 text-xs font-semibold uppercase tracking-[0.32em] text-ember"
+            className="inline-flex items-center rounded-full bg-ember/15 px-4 py-2 text-sm font-bold uppercase tracking-[0.32em] text-ember"
           >
             Precision Food Safety Consulting
           </motion.span>

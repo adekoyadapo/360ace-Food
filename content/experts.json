@@ -1,0 +1,33 @@
+[
+  {
+    "name": "Dr. Ifeoluwa Adekoya",
+    "title": "PhD Food Technologist",
+    "image": "/images/ifeoluwa-placeholder.png",
+    "bio": "PhD Food Technologist, ISO 9001:2015 Lead Auditor, and Lean Six Sigma Green Belt with a decade of impact across the food, research, and pharmaceutical industries.",
+    "recognitions": [
+      "ISO 9001:2015 Lead Auditor & Lean Six Sigma Green Belt",
+      "30+ peer-reviewed publications guiding food safety innovation"
+    ],
+    "collaborations": [
+      "Council for Scientific and Industrial Research (CSIR)",
+      "International Association for Food Protection (IAFP)",
+      "Agri-food SMEs and leading laboratories across Africa"
+    ]
+  },
+  {
+    "name": "Dr. Jane Doe",
+    "title": "Food Safety & QA Specialist",
+    "image": "/images/blog-lab.jpg",
+    "bio": "Advisor to manufacturing teams on HACCP, GMP, and BRC readiness with a focus on measurable quality outcomes and team enablement.",
+    "recognitions": [
+      "HACCP, GMP, and BRC readiness leadership",
+      "Cross‑functional training program design"
+    ],
+    "collaborations": [
+      "Regional dairy and beverage processors",
+      "Accredited food testing laboratories",
+      "Innovation hubs and accelerators"
+    ]
+  }
+]
+

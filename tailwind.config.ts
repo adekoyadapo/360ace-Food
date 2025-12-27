@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        xs760: '760px'
+      },
       colors: {
         midnight: '#142A1C',
         ember: '#7BBF3F',

@@ -6,11 +6,11 @@ import { useState } from 'react';
 import { z } from 'zod';
 
 const contactSchema = z.object({
-  name: z.string().min(2, 'Name is required'),
-  email: z.string().email('Provide a valid email'),
-  organization: z.string().optional(),
-  serviceNeed: z.string().optional(),
-  message: z.string().min(10, 'Tell us a bit more about your goals'),
+  name: z.string().min(2, 'Name is required').max(100, 'Name too long'),
+  email: z.string().email('Provide a valid email').max(200, 'Email too long'),
+  organization: z.string().max(200, 'Organization too long').optional(),
+  serviceNeed: z.string().max(200, 'Please shorten this').optional(),
+  message: z.string().min(10, 'Tell us a bit more about your goals').max(4000, 'Message too long'),
   honeypot: z.string().optional()
 });
 

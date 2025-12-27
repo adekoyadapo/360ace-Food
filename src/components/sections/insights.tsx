@@ -9,7 +9,7 @@ interface InsightsProps {
 }
 
 export function Insights({ posts }: InsightsProps) {
-  
+  const list = posts ?? [];
   return (
     <section id="insights" className="mx-auto mt-24 w-full max-w-6xl px-6">
       <div className="flex items-end justify-between gap-6">
@@ -24,8 +24,13 @@ export function Insights({ posts }: InsightsProps) {
           View all
         </Link>
       </div>
-      <div className="mt-12 grid gap-8 md:grid-cols-3">
-        {posts.map((post, index) => (
+      {list.length === 0 ? (
+        <div className="mt-10 rounded-3xl border border-emerald-900/10 bg-white/90 p-8 text-center text-slate shadow-brand">
+          <p className="text-sm">No insights published yet. Check back soon.</p>
+        </div>
+      ) : (
+        <div className="mt-12 grid gap-8 md:grid-cols-3">
+        {list.map((post, index) => (
           <Reveal key={post.slug} delay={0.05 * index}>
             <article
               className="group rounded-3xl border border-emerald-900/10 bg-white/90 p-6 shadow-brand transition hover:-translate-y-1 hover:border-ember/40 sm:p-8"
@@ -40,6 +45,7 @@ export function Insights({ posts }: InsightsProps) {
           </Reveal>
         ))}
       </div>
+      )}
       <Link href="/insights" className="mt-10 inline-flex text-sm font-semibold text-ember md:hidden">
         View all insights
       </Link>

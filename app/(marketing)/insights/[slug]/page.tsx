@@ -23,9 +23,29 @@ export async function generateMetadata({ params }: InsightPageProps): Promise<Me
     return {};
   }
 
+  const base = process.env.NEXT_PUBLIC_SITE_URL || 'https://360acefood.example';
+  const url = `${base}/insights/${params.slug}`;
+  const title = `${post.frontmatter.title} | Insights`;
+  const description = post.frontmatter.description;
+  const image = post.frontmatter.heroImage ? [{ url: post.frontmatter.heroImage }] : undefined;
+
   return {
-    title: `${post.frontmatter.title} | Insights`,
-    description: post.frontmatter.description
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      type: 'article',
+      url,
+      title,
+      description,
+      images: image
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: image?.map((i) => i.url)
+    }
   };
 }
 
@@ -38,6 +58,24 @@ export default async function InsightDetailPage({ params }: InsightPageProps) {
 
   return (
     <article className="mx-auto w-full max-w-4xl px-5 pb-24 pt-24 sm:px-6">
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Article',
+            headline: post.frontmatter.title,
+            datePublished: post.frontmatter.date,
+            author: post.frontmatter.author ? { '@type': 'Person', name: post.frontmatter.author } : undefined,
+            image: post.frontmatter.heroImage || undefined,
+            mainEntityOfPage: {
+              '@type': 'WebPage',
+              '@id': `${process.env.NEXT_PUBLIC_SITE_URL || 'https://360acefood.example'}/insights/${params.slug}`
+            }
+          })
+        }}
+      />
       <Link href="/insights" className="text-sm text-ember">← Back to insights</Link>
       <Reveal variant="fade-in">
         <div className="mt-6 rounded-3xl border border-emerald-900/10 bg-white/95 p-6 shadow-brand sm:p-10">

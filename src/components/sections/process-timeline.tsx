@@ -11,6 +11,9 @@ const spring = { type: 'spring', stiffness: 180, damping: 24, mass: 0.9 } as con
 export function ProcessTimeline() {
   const steps = getProcess();
   const [hovered, setHovered] = useState<number | null>(null);
+  if (!steps || steps.length === 0) {
+    return null;
+  }
 
   return (
     <section id="process" className="anchor-offset mx-auto mt-24 w-full max-w-6xl px-6">

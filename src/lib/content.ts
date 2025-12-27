@@ -48,6 +48,42 @@ export function getExperts() {
   return experts as Expert[];
 }
 
+const DEFAULT_SITE: SiteConfig = {
+  site: {
+    name: '360ACE.FOOD',
+    brand: '360ace.Food',
+    email: 'food@360ace.food',
+    phone: '+1 (212) 555-0123'
+  },
+  nav: [
+    { path: '#home', label: 'Home' },
+    { path: '#services', label: 'Services' },
+    { path: '#process', label: 'Process' },
+    { path: '/insights', label: 'Insights' },
+    { path: '/contact', label: 'Contact' }
+  ],
+  hero: {
+    eyebrow: 'Precision Food Safety Consulting',
+    title: 'Science-led protection for resilient, trusted food systems.',
+    subtitle:
+      'We help quality leaders anticipate risk, engineer compliant operations, and build consumer confidence through evidence-based strategy, training, and research partnerships.',
+    primaryCta: { label: 'Book a consultation', href: '/contact' },
+    secondaryCta: { label: 'Explore capabilities', href: '/#services' }
+  },
+  ctaBand: {
+    eyebrow: 'Partner with us',
+    title: 'Ready to elevate your food safety posture?',
+    description:
+      'Let’s co-design a roadmap that aligns compliance, capability, and innovation across your value chain.'
+  }
+};
+
 export function getSite(): SiteConfig {
-  return site as SiteConfig;
+  const cfg = (site ?? {}) as Partial<SiteConfig>;
+  return {
+    site: { ...DEFAULT_SITE.site, ...(cfg.site ?? {}) },
+    nav: (cfg.nav && Array.isArray(cfg.nav) ? cfg.nav : DEFAULT_SITE.nav) as SiteConfig['nav'],
+    hero: { ...DEFAULT_SITE.hero, ...(cfg.hero ?? {}) },
+    ctaBand: { ...DEFAULT_SITE.ctaBand, ...(cfg.ctaBand ?? {}) }
+  } as SiteConfig;
 }

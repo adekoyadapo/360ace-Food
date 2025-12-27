@@ -24,9 +24,6 @@ export function CTABand() {
               <Link href={`mailto:${site.email}`} className="text-midnight/70">
                 {site.email}
               </Link>
-              <Link href={`tel:${site.phone.replace(/[^+\d]/g, '')}`} className="text-midnight/70">
-                {site.phone}
-              </Link>
             </div>
           </div>
         </div>
@@ -34,3 +31,4 @@ export function CTABand() {
     </section>
   );
 }
+

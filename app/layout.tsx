@@ -9,13 +9,15 @@ import { PageTransition } from '@/components/layout/page-transition';
 
 const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-inter' });
 const manrope = Manrope({ subsets: ['latin'], display: 'swap', variable: '--font-manrope' });
-const maintenanceEnabled = process.env.NEXT_PUBLIC_MAINTENANCE_MODE === 'true';
+const maintenanceEnabled = process.env.NODE_ENV === 'production' && process.env.NEXT_PUBLIC_MAINTENANCE_MODE === 'true';
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://360acefood.example';
 
 export const metadata: Metadata = {
   title: '360ace Food Consulting',
   description:
     'We deliver science-led food safety, regulatory, and quality assurance consulting for organizations ready to elevate compliance and consumer trust.',
-  metadataBase: new URL('https://360acefood.example'),
+  metadataBase: new URL(siteUrl),
   icons: {
     icon: '/favicon.png',
     shortcut: '/favicon.png',

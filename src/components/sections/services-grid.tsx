@@ -7,6 +7,7 @@ import type { Route } from 'next';
 import { getServices, ServiceCategory } from '@/lib/content';
 import { SectionHeading } from '@/components/ui/section-heading';
 import { Reveal } from '@/components/ui/reveal';
+import { useMediaQuery } from '@/hooks/use-breakpoint';
 
 const cardVariants = {
   initial: { y: 0, rotateX: 0, rotateY: 0, boxShadow: '0 25px 60px -40px rgba(20, 60, 30, 0.25)' },
@@ -23,6 +24,7 @@ export function ServicesGrid() {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [width, setWidth] = useState(0);
   const [index, setIndex] = useState(0);
+  const is760 = useMediaQuery('(min-width: 760px)');
 
   useEffect(() => {
     const el = containerRef.current;
@@ -34,15 +36,20 @@ export function ServicesGrid() {
     return () => ro.disconnect();
   }, []);
 
-  // Page the services into groups of 4
+  // Page the services into groups: 2 below 760px, 4 from 760px and up
   const pages = useMemo(() => {
-    const chunkSize = 4;
+    const chunkSize = is760 ? 4 : 2;
     const out: ServiceCategory[][] = [];
     for (let i = 0; i < serviceGroups.length; i += chunkSize) {
       out.push(serviceGroups.slice(i, i + chunkSize));
     }
     return out;
-  }, [serviceGroups]);
+  }, [serviceGroups, is760]);
+
+  // Ensure index is within range when pages length changes
+  useEffect(() => {
+    if (index >= pages.length) setIndex(0);
+  }, [pages.length, index]);
 
   // Auto-advance every ~10s
   useEffect(() => {
@@ -63,6 +70,11 @@ export function ServicesGrid() {
         />
       </Reveal>
       <Reveal delay={0.1}>
+        {serviceGroups.length === 0 ? (
+          <div className="mt-10 rounded-3xl border border-emerald-900/10 bg-white/90 p-8 text-center text-slate shadow-brand">
+            <p className="text-sm">Service catalogue is being updated. Please check back soon.</p>
+          </div>
+        ) : (
         <div className="mt-12" ref={containerRef}>
           <div className="overflow-hidden rounded-3xl border border-emerald-900/10 bg-white/95 shadow-brand">
             <motion.div
@@ -73,7 +85,7 @@ export function ServicesGrid() {
             >
               {pages.map((page, pageIndex) => (
                 <div key={pageIndex} className="min-w-full p-6 sm:p-8" style={{ width: width || '100%' }}>
-                  <div className="grid gap-8 sm:grid-cols-2">
+                  <div className="grid grid-cols-2 gap-6 sm:grid-cols-2 md:gap-8">
                     {page.map((group) => (
                       <motion.article
                         key={group.category}
@@ -162,6 +174,7 @@ export function ServicesGrid() {
             </div>
           )}
         </div>
+        )}
       </Reveal>
     </section>
   );

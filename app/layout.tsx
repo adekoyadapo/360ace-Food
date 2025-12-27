@@ -12,9 +12,9 @@ const manrope = Manrope({ subsets: ['latin'], display: 'swap', variable: '--font
 const maintenanceEnabled = process.env.NEXT_PUBLIC_MAINTENANCE_MODE === 'true';
 
 export const metadata: Metadata = {
-  title: '360ace.Food | Precision Food Safety Consulting',
+  title: '360ace Food Consulting',
   description:
-    'Dr. Ifeoluwa Adekoya delivers science-led food safety, regulatory, and quality assurance consulting for organizations ready to elevate compliance and consumer trust.',
+    'We deliver science-led food safety, regulatory, and quality assurance consulting for organizations ready to elevate compliance and consumer trust.',
   metadataBase: new URL('https://360acefood.example'),
   icons: {
     icon: '/favicon.png',

@@ -2,35 +2,32 @@
 
 import Link from 'next/link';
 import type { Route } from 'next';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { MenuIcon } from '@/components/ui/menu-icon';
 import { Logo } from '@/components/ui/logo';
-
-const navConfig = [
-  { path: '#home', label: 'Home' },
-  { path: '#services', label: 'Services' },
-  { path: '#process', label: 'Process' },
-  { path: '/insights', label: 'Insights' },
-  { path: '/contact', label: 'Contact' }
-];
-
-const navItems: Array<{ href: Route; label: string }> = navConfig.map(({ path, label }) => ({
-  label,
-  href: (path.startsWith('#') ? (`/${path}` as Route) : (path as Route))
-}));
+import { getSite } from '@/lib/content';
 
 export function Header() {
+  const { nav, site } = getSite();
+  const navItems: Array<{ href: Route; label: string }> = useMemo(
+    () =>
+      nav.map(({ path, label }) => ({
+        label,
+        href: (path.startsWith('#') ? (`/${path}` as Route) : (path as Route))
+      })),
+    [nav]
+  );
   const [open, setOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-40 backdrop-blur-lg">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 rounded-full border border-emerald-900/5 bg-white/95 px-4 py-3 shadow-brand transition-all sm:px-6 sm:py-4">
         <Link href="/#home" className="font-display flex items-center gap-2 text-xs font-semibold tracking-[0.18em] text-slate/80 sm:text-sm sm:tracking-[0.2em]">
-          <span className="sr-only">360ace.Food</span>
+          <span className="sr-only">{site?.brand ?? 'Site'}</span>
           <Logo size="sm" className="sm:hidden" />
           <Logo size="md" className="hidden sm:block" />
-          <span className="hidden sm:inline-block">360ACE.FOOD</span>
+          <span className="hidden sm:inline-block">{site?.name ?? 'SITE'}</span>
         </Link>
         <nav className="hidden items-center gap-7 text-sm font-medium text-slate/80 md:flex">
           {navItems.map((item) => (

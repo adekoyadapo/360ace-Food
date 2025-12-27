@@ -5,16 +5,38 @@ import ContactRequestEmail from '../../../emails/contact-request';
 const mailerSendToken = process.env.MAILERSEND_API_TOKEN;
 
 const contactSchema = z.object({
-  name: z.string().min(2),
-  email: z.string().email(),
-  organization: z.string().optional(),
-  serviceNeed: z.string().optional(),
-  message: z.string().min(10),
+  name: z.string().min(2).max(100),
+  email: z.string().email().max(200),
+  organization: z.string().max(200).optional(),
+  serviceNeed: z.string().max(200).optional(),
+  message: z.string().min(10).max(4000),
   honeypot: z.string().optional()
 });
 
+// naive in-memory rate limiter (per instance)
+const RATE_LIMIT_WINDOW_MS = 60_000;
+const RATE_LIMIT_MAX = 5;
+const requests = new Map<string, { count: number; expires: number }>();
+
+function isRateLimited(key: string): boolean {
+  const now = Date.now();
+  const entry = requests.get(key);
+  if (!entry || entry.expires < now) {
+    requests.set(key, { count: 1, expires: now + RATE_LIMIT_WINDOW_MS });
+    return false;
+  }
+  entry.count += 1;
+  if (entry.count > RATE_LIMIT_MAX) return true;
+  return false;
+}
+
 export async function POST(request: Request) {
   try {
+    // Basic rate-limit: use x-forwarded-for or remote address
+    const ip = (request.headers.get('x-forwarded-for') || '').split(',')[0]?.trim() || 'unknown';
+    if (isRateLimited(ip)) {
+      return NextResponse.json({ error: 'Too many requests' }, { status: 429 });
+    }
     const json = await request.json();
     const data = contactSchema.parse(json);
 

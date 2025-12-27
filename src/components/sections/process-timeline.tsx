@@ -18,7 +18,7 @@ export function ProcessTimeline() {
         <SectionHeading
           eyebrow="Process"
           title="Clarity at every stage of engagement."
-          description="A partnership designed to reveal insights quickly, deploy with precision, and sustain measurable performance."
+          description="A partnership designed to reveal insights quickly, with precision, and sustain measurable performance."
         />
       </Reveal>
       <Reveal delay={0.1}>

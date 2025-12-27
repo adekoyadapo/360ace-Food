@@ -1,23 +1,25 @@
 import Link from 'next/link';
 import { NewsletterForm } from '@/components/sections/newsletter-form';
 import { Logo } from '@/components/ui/logo';
+import { getSite } from '@/lib/content';
 
 export function Footer() {
+  const { site, nav } = getSite();
   return (
     <footer className="mt-24 border-t border-emerald-900/10 bg-white text-slate">
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 py-16 md:flex-row md:items-start md:justify-between">
         <div className="space-y-5 md:max-w-md">
           <Link href="/#home" className="font-display inline-flex items-center gap-2 text-sm font-semibold tracking-[0.2em] text-slate/70">
             <Logo size="md" />
-            <span>360ACE.FOOD</span>
+            <span>{site.name}</span>
           </Link>
           <p className="text-sm leading-6 text-slate/70">
             Safeguarding food systems with evidence-based strategy, agile implementation, and enduring partnerships across
             Africa and beyond.
           </p>
           <div className="flex gap-4 text-sm text-slate/60">
-            <Link href="mailto:food@360ace.food" className="hover:text-midnight">
-              food@360ace.food
+            <Link href={`mailto:${site.email}`} className="hover:text-midnight">
+              {site.email}
             </Link>
           </div>
         </div>
@@ -25,26 +27,13 @@ export function Footer() {
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate/50">Navigation</p>
             <ul className="mt-4 space-y-2 text-sm text-slate/70">
-              <li>
-                <Link href="/#services" className="hover:text-midnight">
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link href="/#process" className="hover:text-midnight">
-                  Process
-                </Link>
-              </li>
-              <li>
-                <Link href="/insights" className="hover:text-midnight">
-                  Insights
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="hover:text-midnight">
-                  Contact
-                </Link>
-              </li>
+              {nav.map(({ path, label }) => (
+                <li key={label}>
+                  <Link href={(path.startsWith('#') ? `/${path}` : path) as any} className="hover:text-midnight">
+                    {label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
           <div>

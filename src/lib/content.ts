@@ -5,6 +5,7 @@ import stats from '~content/stats.json';
 import recognitions from '~content/recognitions.json';
 import testimonials from '~content/testimonials.json';
 import experts from '~content/experts.json';
+import site from '~content/site.json';
 
 export type ServiceCategory = (typeof services)[number] & {
   areas?: string[];
@@ -17,6 +18,7 @@ export type Stat = (typeof stats)[number];
 export type Recognition = (typeof recognitions)[number];
 export type Testimonial = (typeof testimonials)[number];
 export type Expert = (typeof experts)[number];
+export type SiteConfig = typeof site;
 
 export function getServices(): ServiceCategory[] {
   return services as ServiceCategory[];
@@ -44,4 +46,8 @@ export function getTestimonials() {
 
 export function getExperts() {
   return experts as Expert[];
+}
+
+export function getSite(): SiteConfig {
+  return site as SiteConfig;
 }

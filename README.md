@@ -19,8 +19,10 @@ Visit `http://localhost:3000`.
 
 ## Content Management
 Content lives in the `content/` directory. Edit the JSON or MDX files and restart the dev server if necessary.
+- `content/site.json` – site name/brand, navigation, hero copy/CTAs, CTA band, contact email/phone
 - `content/services.json` – service clusters and bullet lists
 - `content/process.json`, `content/stats.json`, `content/testimonials.json` – homepage data
+- `content/experts.json` – featured expert profiles (carousel)
 - `content/blog/*.mdx` – long-form insight articles (frontmatter + MDX)
 
 ### Adding an Insight Article
@@ -90,6 +92,12 @@ Use the `dev` profile for local development inside Docker:
 - Multi-stage build creates a minimal Next.js [standalone] runtime (see `next.config.mjs`).
 - Runtime container exposes port `3000` and starts with `node server.js`.
 - Static assets are copied from `.next/static` and `public`.
+
+## Security
+- Security headers (HSTS, X-Frame-Options, CSP, etc.) configured in `next.config.mjs`
+- Contact API validates input lengths, uses a honeypot, and applies a simple per-IP rate limiter
+- Email HTML escapes user-submitted content (`emails/contact-request.tsx`)
+- Keep deps fresh: `npm audit --omit=dev` and `npm update` periodically
 
 ## Temporary Maintenance Mode
 The homepage can display a launch countdown while the site is under construction.

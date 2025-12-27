@@ -9,7 +9,7 @@ FROM base AS deps
 WORKDIR /app
 COPY package.json package-lock.json ./
 # Use npm ci for reproducible installs
-RUN npm ci
+RUN apk add --no-cache python3 make g++ && npm ci
 
 # 2) Build the app with dev deps present
 FROM base AS builder
@@ -26,6 +26,7 @@ ENV NEXT_TELEMETRY_DISABLED=1
 WORKDIR /app
 RUN addgroup -g 1001 -S nodejs \
   && adduser -S nextjs -u 1001 -G nodejs -h /home/nextjs
+RUN apk add --no-cache libc6-compat
 
 # Static assets and minimal server output
 # Ensure non-root ownership for runtime reads

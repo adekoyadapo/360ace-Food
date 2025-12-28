@@ -25,6 +25,7 @@ export function ServicesGrid() {
   const [width, setWidth] = useState(0);
   const [index, setIndex] = useState(0);
   const is760 = useMediaQuery('(min-width: 760px)');
+  const isLg = useMediaQuery('(min-width: 1024px)');
 
   useEffect(() => {
     const el = containerRef.current;
@@ -36,15 +37,15 @@ export function ServicesGrid() {
     return () => ro.disconnect();
   }, []);
 
-  // Page the services into groups: 2 below 760px, 4 from 760px and up
+  // Page the services into groups: 1 <760px, 2 at ≥760px, 4 at ≥1024px
   const pages = useMemo(() => {
-    const chunkSize = is760 ? 4 : 2;
+    const chunkSize = isLg ? 4 : is760 ? 2 : 1;
     const out: ServiceCategory[][] = [];
     for (let i = 0; i < serviceGroups.length; i += chunkSize) {
       out.push(serviceGroups.slice(i, i + chunkSize));
     }
     return out;
-  }, [serviceGroups, is760]);
+  }, [serviceGroups, is760, isLg]);
 
   // Ensure index is within range when pages length changes
   useEffect(() => {
@@ -85,7 +86,7 @@ export function ServicesGrid() {
             >
               {pages.map((page, pageIndex) => (
                 <div key={pageIndex} className="min-w-full p-6 sm:p-8" style={{ width: width || '100%' }}>
-                  <div className="grid grid-cols-2 gap-6 sm:grid-cols-2 md:gap-8">
+                  <div className="grid grid-cols-1 gap-6 xs760:grid-cols-2 lg:grid-cols-2 md:gap-8">
                     {page.map((group) => (
                       <motion.article
                         key={group.category}

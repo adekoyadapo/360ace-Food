@@ -21,9 +21,6 @@ export function CTABand() {
               >
                 Book a consultation
               </Link>
-              <Link href={`mailto:${site.email}`} className="text-midnight/70">
-                {site.email}
-              </Link>
             </div>
           </div>
         </div>
@@ -31,4 +28,3 @@ export function CTABand() {
     </section>
   );
 }
-

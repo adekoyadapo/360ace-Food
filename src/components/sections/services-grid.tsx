@@ -37,7 +37,6 @@ export function ServicesGrid() {
     return () => ro.disconnect();
   }, []);
 
-  // Page the services into groups: 1 <760px, 2 at ≥760px, 4 at ≥1024px
   const pages = useMemo(() => {
     const chunkSize = isLg ? 4 : is760 ? 2 : 1;
     const out: ServiceCategory[][] = [];
@@ -47,12 +46,10 @@ export function ServicesGrid() {
     return out;
   }, [serviceGroups, is760, isLg]);
 
-  // Ensure index is within range when pages length changes
   useEffect(() => {
     if (index >= pages.length) setIndex(0);
   }, [pages.length, index]);
 
-  // Auto-advance every ~10s
   useEffect(() => {
     if (pages.length <= 1) return;
     const id = setInterval(() => setIndex((prev) => (prev + 1) % pages.length), 10000);
@@ -160,7 +157,6 @@ export function ServicesGrid() {
             </motion.div>
           </div>
 
-          {/* Bottom pager */}
           {pages.length > 1 && (
             <div className="mt-4 flex items-center justify-end gap-2">
               {pages.map((_, i) => (

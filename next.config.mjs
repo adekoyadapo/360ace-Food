@@ -7,7 +7,6 @@ const nextConfig = {
       bodySizeLimit: '2mb'
     }
   },
-  // Produce a minimal, self-contained server for Docker runtime
   output: 'standalone',
   async headers() {
     const isDev = process.env.NODE_ENV !== 'production';
@@ -27,10 +26,8 @@ const nextConfig = {
         value: [
           "default-src 'self'",
           `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''}`,
-          // Allow Google Fonts stylesheet at runtime (no build-time fetches)
           "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
           "img-src 'self' data:",
-          // Allow font files from Google Fonts CDN
           "font-src 'self' data: https://fonts.gstatic.com",
           `connect-src 'self'${isDev ? ' ws:' : ''}`,
           "frame-ancestors 'none'",

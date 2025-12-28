@@ -19,15 +19,10 @@ export function Footer() {
             Safeguarding food systems with evidence-based strategy, agile implementation, and enduring partnerships across
             Africa and beyond.
           </p>
-          <div className="flex gap-4 text-sm text-slate/60">
-            <Link href={`mailto:${site.email}`} className="hover:text-midnight">
-              {site.email}
-            </Link>
-          </div>
         </div>
         <div className="hidden md:block">
           <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate/50">Navigation</p>
-          <ul className="mt-4 space-y-2 text-sm text-slate/70">
+          <ul className="mt-3 grid w-fit grid-cols-3 gap-x-3 gap-y-0.5 text-sm leading-tight text-slate/70">
             {nav.map(({ path, label }) => (
               <motion.li key={label} initial="rest" whileHover="hover" animate="rest" className="relative">
                 <Link
@@ -39,7 +34,7 @@ export function Footer() {
                     variants={{ rest: { scaleX: 0, opacity: 0 }, hover: { scaleX: 1, opacity: 1 } }}
                     transition={{ duration: 0.18, ease: 'easeOut' }}
                     style={{ originX: 0 }}
-                    className="absolute -bottom-1 left-0 h-0.5 w-full rounded-full bg-ember"
+                    className="absolute bottom-0 left-0 h-0.5 w-full rounded-full bg-ember"
                   />
                 </Link>
               </motion.li>

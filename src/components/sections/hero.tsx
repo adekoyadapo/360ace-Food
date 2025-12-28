@@ -8,7 +8,7 @@ import { getSite } from '@/lib/content';
 export function Hero() {
   const { hero } = getSite();
   return (
-    <section id="home" className="relative isolate overflow-hidden pt-12 md:pt-18 xl:pt-20">
+    <section id="home" className="relative isolate overflow-hidden pt-12 md:pt-16 lg:pt-24 xl:pt-28 2xl:pt-32">
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute left-1/2 top-[-20%] h-[680px] w-[680px] -translate-x-1/2 rounded-full bg-ember/12 blur-[180px]" />
         <div className="absolute left-[10%] top-[30%] h-72 w-72 rounded-full bg-sage/15 blur-[170px]" />

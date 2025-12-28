@@ -23,12 +23,11 @@ export function Header() {
   const [open, setOpen] = useState(false);
   const [activeId, setActiveId] = useState<string>('home');
 
-  // Scrollspy using document offsets to avoid flicker between adjacent sections
   useEffect(() => {
     if (typeof window === 'undefined') return;
     if (pathname !== '/') return;
     const sectionIds = ['home', 'services', 'process'];
-    const offset = 160; // accounts for header + anchor scroll-margin
+    const offset = 160;
 
     const handler = () => {
       const scrollPos = window.scrollY + offset;
@@ -51,7 +50,6 @@ export function Header() {
     };
   }, [pathname]);
 
-  // Ensure clicking an anchor updates active state immediately
   const onNavClick = (href: Route) => () => {
     if (href.startsWith('/#')) {
       const id = href.slice(2);
@@ -61,12 +59,10 @@ export function Header() {
   };
 
   const isItemActive = (href: Route) => {
-    // Anchor links on homepage
     if (href.startsWith('/#')) {
       const id = href.slice(2);
       return pathname === '/' && id === activeId;
     }
-    // Path-based highlighting
     if (href === '/contact') return pathname === '/contact';
     if (href.startsWith('/insights')) return pathname?.startsWith('/insights');
     if (href === '/#home') return pathname === '/';

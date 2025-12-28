@@ -22,7 +22,6 @@ const contactSchema = z.object({
   honeypot: z.string().optional()
 });
 
-// naive in-memory rate limiter (per instance)
 const RATE_LIMIT_WINDOW_MS = 60_000;
 const RATE_LIMIT_MAX = 5;
 const DAILY_LIMIT_MAX = Number(process.env.CONTACT_DAILY_LIMIT || '20');

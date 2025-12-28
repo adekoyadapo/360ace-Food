@@ -81,7 +81,7 @@ export function Header() {
           <Logo size="md" className="hidden sm:block" />
           <span className="inline-block">{site?.name ?? 'SITE'}</span>
         </Link>
-        <nav className="hidden items-center gap-7 text-sm font-medium text-slate/80 md:flex">
+        <nav className="hidden items-center gap-7 text-[15px] font-medium text-slate/80 md:flex">
           {navItems.map((item) => (
             <Link
               key={item.label}

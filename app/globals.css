@@ -19,7 +19,12 @@
   --gradient-start: rgba(255, 255, 255, 0.9);
   --gradient-mid: rgba(199, 232, 204, 0.72);
   --gradient-end: rgba(232, 247, 236, 0.95);
+  /* Map to Google font family names so Tailwind vars resolve */
+  --font-inter: 'Inter', system-ui, sans-serif;
+  --font-manrope: 'Manrope', system-ui, sans-serif;
 }
+
+/* Google Fonts are loaded at runtime via <link> in app/layout.tsx */
 
 body {
   font-family: var(--font-inter);

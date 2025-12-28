@@ -27,9 +27,11 @@ const nextConfig = {
         value: [
           "default-src 'self'",
           `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''}`,
-          "style-src 'self' 'unsafe-inline'",
+          // Allow Google Fonts stylesheet at runtime (no build-time fetches)
+          "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
           "img-src 'self' data:",
-          "font-src 'self' data:",
+          // Allow font files from Google Fonts CDN
+          "font-src 'self' data: https://fonts.gstatic.com",
           `connect-src 'self'${isDev ? ' ws:' : ''}`,
           "frame-ancestors 'none'",
           "base-uri 'self'",

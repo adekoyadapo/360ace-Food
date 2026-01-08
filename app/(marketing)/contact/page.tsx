@@ -6,7 +6,8 @@ import { Reveal } from '@/components/ui/reveal';
 export const metadata: Metadata = {
   title: 'Contact | 360ace.Food Consulting',
   description:
-    'Connect with Dr. Ifeoluwa Adekoya to design bespoke food safety, quality assurance, and regulatory readiness programs.'
+    'Connect with Dr. Ifeoluwa Adekoya to design bespoke food safety, quality assurance, and regulatory readiness programs.',
+  alternates: { canonical: '/contact' }
 };
 
 export default function ContactPage() {

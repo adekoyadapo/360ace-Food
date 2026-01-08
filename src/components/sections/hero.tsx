@@ -2,24 +2,27 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import type { Route } from 'next';
+import { getSite } from '@/lib/content';
 
 export function Hero() {
+  const { hero } = getSite();
   return (
-    <section id="home" className="relative isolate overflow-hidden pt-28">
+    <section id="home" className="relative isolate overflow-hidden pt-12 md:pt-16 lg:pt-24 xl:pt-28 2xl:pt-32">
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute left-1/2 top-[-20%] h-[680px] w-[680px] -translate-x-1/2 rounded-full bg-ember/12 blur-[180px]" />
         <div className="absolute left-[10%] top-[30%] h-72 w-72 rounded-full bg-sage/15 blur-[170px]" />
         <div className="absolute right-[8%] top-[18%] h-64 w-64 rounded-full bg-amber-200/30 blur-[160px]" />
       </div>
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-4 pb-16 pt-14 sm:px-6 md:grid md:grid-cols-[1.1fr_0.9fr] md:items-center md:gap-16 md:pb-20">
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-4 pb-8 pt-4 sm:px-6 md:grid md:grid-cols-[1.1fr_0.9fr] md:items-center md:gap-10 md:pb-14 xl:gap-12 xl:pb-16">
         <div className="space-y-6 md:space-y-8">
           <motion.span
             initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.6 }}
-            className="inline-flex items-center rounded-full bg-ember/15 px-4 py-2 text-xs font-semibold uppercase tracking-[0.32em] text-ember"
+            className="inline-flex items-center rounded-full bg-ember/15 px-4 py-2 text-sm font-bold uppercase tracking-[0.32em] text-ember"
           >
-            Precision Food Safety Consulting
+            {hero.eyebrow}
           </motion.span>
           <motion.h1
             initial={{ opacity: 0, y: 24 }}
@@ -27,7 +30,7 @@ export function Hero() {
             transition={{ delay: 0.2, duration: 0.7 }}
             className="font-display text-3xl leading-tight text-midnight sm:text-4xl md:text-6xl"
           >
-            Science-led protection for resilient, trusted food systems.
+            {hero.title}
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 24 }}
@@ -35,8 +38,7 @@ export function Hero() {
             transition={{ delay: 0.35, duration: 0.7 }}
             className="max-w-xl text-base text-slate/70 sm:text-lg"
           >
-            Dr. Ifeoluwa Adekoya helps quality leaders anticipate risk, engineer compliant operations, and build consumer
-            confidence through evidence-based strategy, training, and research partnerships.
+            {hero.subtitle}
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -45,16 +47,16 @@ export function Hero() {
             className="flex flex-wrap gap-3 sm:gap-4"
           >
             <Link
-              href="/contact"
+              href={hero.primaryCta.href as unknown as Route}
               className="inline-flex items-center gap-2 rounded-full bg-ember px-5 py-3 text-sm font-semibold text-white shadow-brand transition hover:-translate-y-0.5 hover:shadow-lg"
             >
-              Book a consultation
+              {hero.primaryCta.label}
             </Link>
             <Link
-              href="/#services"
+              href={hero.secondaryCta.href as unknown as Route}
               className="inline-flex items-center gap-2 rounded-full border border-emerald-900/10 bg-white px-5 py-3 text-sm font-semibold text-slate/80 transition hover:-translate-y-0.5 hover:border-ember/50"
             >
-              Explore capabilities
+              {hero.secondaryCta.label}
             </Link>
           </motion.div>
         </div>

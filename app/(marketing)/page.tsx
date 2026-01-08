@@ -7,34 +7,44 @@ import { TrustedStrip } from '@/components/sections/trusted-strip';
 import { ServicesGrid } from '@/components/sections/services-grid';
 import { ProcessTimeline } from '@/components/sections/process-timeline';
 import { Expertise } from '@/components/sections/expertise';
-import { Testimonials } from '@/components/sections/testimonials';
-import { Insights } from '@/components/sections/insights';
 import { CTABand } from '@/components/sections/cta-band';
-import { getBlogSummaries } from '@/lib/blog';
 import MaintenanceCountdown from '@/components/maintenance-countdown';
 import { Logo } from '@/components/ui/logo';
+import { getSite } from '@/lib/content';
 
 dayjs.extend(duration);
 
-const maintenanceEnabled = process.env.NEXT_PUBLIC_MAINTENANCE_MODE === 'true';
+const maintenanceEnabled =
+  process.env.NODE_ENV === 'production' && process.env.NEXT_PUBLIC_MAINTENANCE_MODE === 'true';
 
 export default async function MarketingPage() {
+  const { site } = getSite();
   if (maintenanceEnabled) {
     const targetLaunchIso = process.env.NEXT_PUBLIC_LAUNCH_AT ?? dayjs().add(14, 'day').toISOString();
     return <MaintenanceShell targetIso={targetLaunchIso} />;
   }
-
-  const insights = (await getBlogSummaries()).slice(0, 3);
+  
 
   return (
     <div className="pb-24">
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Organization',
+            name: site.name,
+            url: process.env.NEXT_PUBLIC_SITE_URL || 'https://360acefood.example',
+            contactPoint: [{ '@type': 'ContactPoint', email: site.email }]
+          })
+        }}
+      />
       <Hero />
       <TrustedStrip />
       <ServicesGrid />
       <ProcessTimeline />
       <Expertise />
-      <Testimonials />
-      <Insights posts={insights} />
       <CTABand />
     </div>
   );

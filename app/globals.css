@@ -19,6 +19,8 @@
   --gradient-start: rgba(255, 255, 255, 0.9);
   --gradient-mid: rgba(199, 232, 204, 0.72);
   --gradient-end: rgba(232, 247, 236, 0.95);
+  --font-inter: 'Inter', system-ui, sans-serif;
+  --font-manrope: 'Manrope', system-ui, sans-serif;
 }
 
 body {
@@ -100,5 +102,14 @@ a {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+@layer utilities {
+  .text-sm:not(.font-thin):not(.font-extralight):not(.font-light):not(.font-normal):not(.font-medium):not(.font-semibold):not(.font-bold):not(.font-extrabold):not(.font-black) {
+    font-weight: 500;
+  }
+  .text-xs:not(.font-thin):not(.font-extralight):not(.font-light):not(.font-normal):not(.font-medium):not(.font-semibold):not(.font-bold):not(.font-extrabold):not(.font-black) {
+    font-weight: 500;
   }
 }

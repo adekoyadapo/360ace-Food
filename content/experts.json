@@ -1,0 +1,35 @@
+[
+  {
+    "name": "Dr. Ifeoluwa Adekoya",
+    "title": "PhD Food Technologist",
+    "image": "/images/ifeoluwa-placeholder.png",
+    "bio": "PhD Food Technologist, ISO 9001:2015 Lead Auditor, and Lean Six Sigma Green Belt with a decade of impact across the food, research, and pharmaceutical industries.",
+    "recognitions": [
+      "ISO 9001:2015 Lead Auditor & Lean Six Sigma Green Belt",
+      "30+ peer-reviewed publications guiding food safety innovation"
+    ],
+    "collaborations": [
+      "Council for Scientific and Industrial Research (CSIR)",
+      "International Association for Food Protection (IAFP)",
+      "Agri-food SMEs and leading laboratories across Africa"
+    ]
+  },
+  {
+    "name": "Dr. Ajibola Oyedeji",
+    "title": "Food Scientist (PhD Food Science and Technology)",
+    "image": "/images/jb.jpeg",
+    "bio": "Dr. Food Technology, Over ten years of experience in research, quality assurance, methods/products development and laboratory analysis.",
+    "recognitions": [
+      "10+ years in research, QA, and laboratory analysis",
+      "PhD in Food Science and Technology",
+      "ISO 17025-compliant methods and QA framework development",
+      "Leadership in product development and process optimization",
+      "40+ Web of Science-indexed publications and contributions"
+    ],
+    "collaborations": [
+      "Food manufacturers and processors",
+      "Accredited testing laboratories",
+      "Academic and policy bodies"
+    ]
+  }
+]

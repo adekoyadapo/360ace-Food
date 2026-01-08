@@ -1,56 +1,96 @@
 [
   {
-    "category": "Training & Capability Building",
-    "summary": "On-site and virtual programs that embed best practices into daily operations.",
+    "category": "Food Safety & GMP Training",
+    "summary": "From compliance to excellence — onsite and virtual programs that embed Good Manufacturing and Hygienic Practices into daily operations and strengthen food-safety culture.",
     "services": [
-      "On-site and off-site food handling/GMP training",
-      "Custom SOP and SSOP workshops",
-      "Laboratory protocol development and training"
+      "GMP/GHP & Food Safety training for production, QA, and leadership teams",
+      "Training records, certificates, and audit-ready documentation",
+      "Competency evaluation and follow-up refresher sessions",
+      "Real-world examples and guidance tailored to each facility"
     ]
   },
   {
-    "category": "Quality Systems Architecture",
-    "summary": "Design, documentation, and maintenance of resilient quality frameworks.",
+    "category": "Technical Training",
+    "summary": "Building technical confidence from farm to fork — specialized trainings that strengthen analytical, processing, and quality skills.",
     "services": [
-      "Standard Operating Procedure and sanitation program development",
-      "Create and maintain quality systems",
-      "GMP, site, and establishment licensing support"
+      "Food Safety and Microbiology",
+      "Food Processing and Preservation",
+      "Food Laws and Legislation",
+      "Quality and Regulatory Compliance",
+      "Allergen Management and Label Control",
+      "Root Cause Analysis and Internal Auditing"
     ]
   },
   {
-    "category": "Regulatory & Audit Readiness",
-    "summary": "Confidence for inspections, certifications, and regulatory milestones.",
+    "category": "Quality System Documentation",
+    "summary": "Clear, practical, and audit-ready documentation that fits your operations.",
     "services": [
-      "Inspection, pre-audit, and audit preparation",
-      "HACCP, BRC, and GMP guidance",
-      "Regulatory and labeling submission management"
+      "SOP & SSOP development aligned with CFIA, Health Canada, and global standards",
+      "Tailored, workflow-based procedures for every department",
+      "Records designed for easy audit presentation"
     ]
   },
   {
-    "category": "Quality Assurance Partnership",
-    "summary": "Long-term stewardship of compliance, risk, and continuous improvement.",
+    "category": "Laboratory Methods Advisory & Training",
+    "summary": "From testing to trust — building reliable, compliant laboratory systems through practical, results-focused programs.",
     "services": [
-      "Quality assurance and compliance programs",
-      "Ongoing GMP and HARPC advisory",
-      "Supplier and site performance monitoring"
+      "Guidance on selection of food-testing methods",
+      "Training in sampling, analysis, and data interpretation",
+      "Coordination with accredited third-party laboratories",
+      "Ongoing technical troubleshooting and method optimization"
     ]
   },
   {
-    "category": "Research & Product Development",
-    "summary": "Translating science into accelerated product pipelines and safer launches.",
+    "category": "Research Support",
+    "summary": "From concept to publication — structured guidance that enhances scientific rigor and credibility.",
     "services": [
-      "Nutritional value calculation and determination",
-      "Product development and shelf-life studies",
-      "Scientific research planning and literature reviews"
+      "Research design, data organization, and protocol development",
+      "Statistical analysis and data interpretation",
+      "Experimental method development for food & agri-food studies",
+      "Manuscript formatting and journal submission support",
+      "Academic and technical manuscript review and plagiarism check"
+    ]
+  },
+  {
+    "category": "Proposal & Grant Development",
+    "summary": "From ideas to impact — transforming research and industry concepts into funder-ready proposals.",
+    "services": [
+      "Proposal review for clarity, alignment, and technical accuracy",
+      "Grant-writing support for research, community, or industry projects",
+      "Advisory assistance for reporting, resubmission, and funder feedback"
     ]
   },
   {
     "category": "Conference & Insight Support",
-    "summary": "Elevating thought leadership moments with evidence-rich storytelling.",
+    "summary": "Elevating thought leadership through evidence-rich storytelling and impactful knowledge sharing.",
     "services": [
-      "Conference support and presentation development",
-      "Training facilitation across stakeholder groups",
-      "Impact reporting and capacity building"
+      "Conference planning, session coordination, and speaker management",
+      "Presentation & poster development with data-driven visuals",
+      "Training & workshop facilitation for diverse audiences",
+      "Impact reporting and capacity-building documentation"
+    ],
+    "cta": {
+      "label": "View Conferences We Have Supported",
+      "href": "/contact"
+    }
+  },
+  {
+    "category": "Food Import Readiness & Compliance",
+    "summary": "From source to shelf — ensuring imported food products meet Canadian safety and labeling standards.",
+    "services": [
+      "CFIA & Health Canada guidance for specific product categories",
+      "Import permits, documentation, and compliance preparation",
+      "Advisory on food product analysis to ensure safety and quality",
+      "Packaging, labeling, and market-entry advisory"
+    ]
+  },
+  {
+    "category": "Regulatory & Audit Readiness",
+    "summary": "From compliance to confidence — systems, documentation, and training that keep you inspection-ready.",
+    "services": [
+      "Advisory and on-site audit support (CFIA, BRCGS, customer, and internal audits)",
+      "Local and international regulatory compliance interpretation and implementation",
+      "Nutritional value calculation & compliant labeling for retail markets"
     ]
   }
 ]

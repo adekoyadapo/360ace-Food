@@ -9,7 +9,6 @@
     { "path": "#home", "label": "Home" },
     { "path": "#services", "label": "Services" },
     { "path": "#process", "label": "Process" },
-    { "path": "/insights", "label": "Insights" },
     { "path": "/contact", "label": "Contact" }
   ],
   "hero": {
@@ -25,4 +24,3 @@
     "description": "Let’s co-design a roadmap that aligns compliance, capability, and innovation across your value chain."
   }
 }
-

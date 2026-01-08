@@ -7,9 +7,7 @@ import { TrustedStrip } from '@/components/sections/trusted-strip';
 import { ServicesGrid } from '@/components/sections/services-grid';
 import { ProcessTimeline } from '@/components/sections/process-timeline';
 import { Expertise } from '@/components/sections/expertise';
-import { Insights } from '@/components/sections/insights';
 import { CTABand } from '@/components/sections/cta-band';
-import { getBlogSummaries } from '@/lib/blog';
 import MaintenanceCountdown from '@/components/maintenance-countdown';
 import { Logo } from '@/components/ui/logo';
 import { getSite } from '@/lib/content';
@@ -25,8 +23,7 @@ export default async function MarketingPage() {
     const targetLaunchIso = process.env.NEXT_PUBLIC_LAUNCH_AT ?? dayjs().add(14, 'day').toISOString();
     return <MaintenanceShell targetIso={targetLaunchIso} />;
   }
-
-  const insights = (await getBlogSummaries()).slice(0, 3);
+  
 
   return (
     <div className="pb-24">
@@ -48,7 +45,6 @@ export default async function MarketingPage() {
       <ServicesGrid />
       <ProcessTimeline />
       <Expertise />
-      <Insights posts={insights} />
       <CTABand />
     </div>
   );
